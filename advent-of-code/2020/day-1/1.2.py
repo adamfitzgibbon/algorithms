@@ -12,5 +12,5 @@ def do_work(lines):
       vals.add(targetVal - val)
 
 
-with open("1.1_input.txt", 'r') as f:
+with open("1_input.txt", 'r') as f:
   do_work(f.readlines())
