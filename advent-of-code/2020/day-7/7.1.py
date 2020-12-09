@@ -47,7 +47,7 @@ def count_bags(bags):
 
   print(counter-1)
 
-with open("7_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   bags = {}
   for line in f:
     matches = re.findall("\S+ \S+ bag", line)

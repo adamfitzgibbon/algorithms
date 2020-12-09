@@ -1,4 +1,4 @@
-with open("2_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   runningTotal = 0
   for line in f:
     dims =  [int(x) for x in line.rstrip().split("x")]

@@ -10,7 +10,7 @@ def get_id(s, lowerR, upperR, lowerC, upperC):
   if s[0] == "L":
     return get_id(s[1:], lowerR, upperR, lowerC, upperC - (upperC - lowerC) // 2 - 1)
 
-with open("5_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   for line in f:
     row, column = get_id(line.rstrip(), 0, 127, 0, 7)
     id = row * 8 + column

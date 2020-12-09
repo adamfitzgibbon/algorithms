@@ -1,4 +1,4 @@
-with open("6_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   sum = 0
   group = set()
   for line in f:

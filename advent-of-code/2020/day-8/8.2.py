@@ -27,7 +27,7 @@ def execute(lines, visited, swap):
     i += 1
   return acc
 
-with open("8_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   lines = f.readlines()
   visited = {}
   execute(lines, visited, -1)

@@ -30,7 +30,7 @@ def validate (field, value):
     return re.search("^[0-9]{9}$", value)
   return True
 
-with open("4_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   valid_passports = 0
   visited_fields = required_fields.copy()
   for line in f:

@@ -1,4 +1,4 @@
-with open("1_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   vals = set()
   for line in f:
     if int(line) in vals:

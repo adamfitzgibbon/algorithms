@@ -39,7 +39,7 @@ def count_inner_bags(bag):
     sum += innerBag[0] * count_inner_bags(innerBag[1])
   return sum
 
-with open("7_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   bags = {}
   for line in f:
     matches = re.findall("[1-9]?[ ]?\S+ \S+ bag", line)

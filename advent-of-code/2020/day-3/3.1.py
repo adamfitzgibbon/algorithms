@@ -1,4 +1,4 @@
-with open("3_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   x = 0
   trees = 0
   for line in f:

@@ -6,7 +6,7 @@ def is_sum(preamble, val):
           return True
   return False
 
-with open("9_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   lines = [int(x) for x in f.readlines()]
   preamble = lines[:25]
   rest = lines[25:]

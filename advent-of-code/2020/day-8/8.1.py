@@ -1,4 +1,4 @@
-with open("8_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   lines = f.readlines()
   i = 0
   acc = 0

@@ -1,6 +1,6 @@
 required_fields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
 
-with open("4_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   valid_passports = 0
   visited_fields = required_fields.copy()
   for line in f:

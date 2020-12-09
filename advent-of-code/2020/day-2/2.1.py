@@ -1,4 +1,4 @@
-with open("2_input.txt", 'r') as f:
+with open("input.txt", 'r') as f:
   validCount = 0
   for line in f:
     limits, letter, pwd = line.split(" ")
