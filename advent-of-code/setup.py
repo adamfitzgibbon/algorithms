@@ -7,6 +7,6 @@ dir = "day-" + dst
 
 os.mkdir(dir)
 
-copyfile("day-1/1.1.py", f"{dir}/{dst}.1.py")
+copyfile("template.py", f"{dir}/{dst}.1.py")
 open(f"{dir}/{dst}.2.py", "x")
 open(f"{dir}/input.txt", "x")
