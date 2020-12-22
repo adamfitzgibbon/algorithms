@@ -1,4 +1,4 @@
-import re
+import regex as re
 memo = {}
 def get_memo_or_compute(rules, ruleNum):
   if ruleNum in memo:
@@ -8,9 +8,6 @@ def get_memo_or_compute(rules, ruleNum):
     memo[ruleNum] = result
     return result
 
-def get_pairs(list1, list2):
-  return [a+b for a in list1 for b in list2]
-
 def compute_valid_results(rules, ruleNum):
   if rules[ruleNum] in ["a", "b"]:
     return rules[ruleNum]
@@ -18,32 +15,19 @@ def compute_valid_results(rules, ruleNum):
   if len(rule) == 2:
     leftRule, rightRule = rule
     leftPointers, rightPointers = leftRule.split(" "), rightRule.split(" ")
-    if len(leftPointers) > 1:
-      list1, list2  = [get_memo_or_compute(rules, pointer) for pointer in leftPointers]
-      leftResults = get_pairs(list1, list2)
-    else: 
-      leftResults = get_memo_or_compute(rules, leftPointers[0])
-    if len(rightPointers) == 2:
-      list1, list2 = [get_memo_or_compute(rules, pointer) for pointer in rightPointers]
-      rightResults = get_pairs(list1, list2)
-    elif len(leftPointers) == 3:
-      list1, list2, list3  = [get_memo_or_compute(rules, pointer) for pointer in rightPointers]
-      rightResults = [a+b+c for a in list1 for b in list2 for c in list3] 
-    else:
-      rightResults = get_memo_or_compute(rules, rightPointers[0])
-    return leftResults + rightResults
+    leftLists = [get_memo_or_compute(rules, pointer) for pointer in leftPointers]
+    rightLists = [get_memo_or_compute(rules, pointer) for pointer in rightPointers]
+    return f"(({''.join(leftLists)})|({''.join(rightLists)}))"
   else:
     pointers = rule[0].split(" ")
     lists = [get_memo_or_compute(rules, pointer) for pointer in pointers]
-    if len(lists) == 3:
-      list1, list2, list3 = lists
-      return [a+b+c for a in list1 for b in list2 for c in list3]
-    elif len(lists) == 1:
-      return lists[0]
-    else:
-      list1, list2 = lists
-      return get_pairs(list1, list2)
-
+    if ruleNum == "8":
+      lists.append("+")
+    if ruleNum == "11":
+      lists.insert(0, "(?<rec>(")
+      lists.insert(2, ")(?&rec)?(")
+      lists.append("))")
+    return "".join(lists)
 with open("input.txt", 'r') as f:
   lines = [x.rstrip() for x in f.readlines()]
   rules = {}
@@ -60,9 +44,12 @@ with open("input.txt", 'r') as f:
   # 0: 8 11
   # rules["8"] = "42 | 42 8"
   # rules["11"] = "42 31 | 42 11 31"
-  validResults = set(compute_valid_results(rules, "0"))
+  # validResults = set(compute_valid_results(rules, "0"))
+  s = compute_valid_results(rules, "0")
+  expr = re.compile(s)
+  print(expr)
   counter = 0
   for input in inputs:
-    if input in validResults:
+    if expr.fullmatch(input):
       counter += 1
   print(counter)
